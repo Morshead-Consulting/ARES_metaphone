@@ -20,6 +20,12 @@ Or with plain pip:
 pip install metaphone python-Levenshtein
 ```
 
+## Quick start
+
+```
+python altspell_gen.py --targets data\targets.txt --candidates data\candidates.txt --use-spellouts --report
+```
+
 ## Candidate sources
 
 You supply the **targets** (your hand-authored military terms). The generator

@@ -1,5 +1,7 @@
 # ARES alternative-spelling map generator
 
+[![Tests](https://github.com/Morshead-Consulting/ARES_metaphone/actions/workflows/test.yml/badge.svg)](https://github.com/Morshead-Consulting/ARES_metaphone/actions/workflows/test.yml)
+
 Phase 1 of DN-PHON-001: generate candidate ASR confusions for military terms
 using Double Metaphone + Levenshtein, for expert curation into the CTC-WS
 context file.

@@ -6,6 +6,12 @@ context file.
 
 ## Install (one-time)
 
+With uv (recommended — locks exact versions via `uv.lock`):
+```
+uv sync
+```
+
+Or with plain pip:
 ```
 pip install metaphone python-Levenshtein
 ```
@@ -28,7 +34,7 @@ Combine freely. Your `--candidates` entries take priority on de-duplication.
 From `C:\Users\rftwo\Documents\ARES_metaphone`, in Command Prompt:
 
 ```
-python altspell_gen.py --targets targets.txt --use-spellouts --use-wordlist ^
+python altspell_gen.py --targets data\targets.txt --use-spellouts --use-wordlist ^
     --max-key-dist 0 --max-per-target 8 --report
 ```
 
@@ -42,11 +48,11 @@ First run with `--use-wordlist` downloads the word list to
 Supply your own word list and forbid network access:
 
 ```
-python altspell_gen.py --targets targets.txt --wordlist-file mywords.txt ^
+python altspell_gen.py --targets data\targets.txt --wordlist-file mywords.txt ^
     --no-download --report
 ```
 
-Or just use `--use-spellouts` and `--candidates`, which never touch the network.
+Or just use `--use-spellouts` and `--candidates data\candidates.txt`, which never touch the network.
 
 ## Tuning
 
@@ -72,4 +78,3 @@ This is an **assist to expert curation, not a replacement**. The tool
 proposes; the human keeps the plausible confusions, discards the noise, and
 adds real mis-recognitions the algorithms miss. The Sprint 3 recordings feed
 the actual observed errors back into `--candidates`, closing the loop.
-```

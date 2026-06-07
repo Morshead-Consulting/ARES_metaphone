@@ -6,6 +6,8 @@ context file.
 
 ## Install (one-time)
 
+Requires Python 3.12 (see `.python-version`).
+
 With uv (recommended — locks exact versions via `uv.lock`):
 ```
 uv sync

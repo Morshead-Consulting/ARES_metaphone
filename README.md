@@ -29,9 +29,9 @@ finds confusable candidates from any combination of three sources:
 
 Combine freely. Your `--candidates` entries take priority on de-duplication.
 
-## Windows usage (your machine)
+## Windows usage
 
-From `C:\Users\rftwo\Documents\ARES_metaphone`, in Command Prompt:
+From the project directory, in Command Prompt:
 
 ```
 python altspell_gen.py --targets data\targets.txt --use-spellouts --use-wordlist ^

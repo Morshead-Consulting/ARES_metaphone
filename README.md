@@ -20,6 +20,12 @@ Or with plain pip:
 pip install metaphone python-Levenshtein
 ```
 
+## Run tests
+
+```
+uv run pytest tests/ -v
+```
+
 ## Quick start
 
 ```

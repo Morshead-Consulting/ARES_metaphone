@@ -1,0 +1,173 @@
+# Curation report  (keep / discard the proposals below)
+# 10 targets, 248020 candidates, max_key_dist=1
+
+ISTAR  [ASTR]
+    <- astare                   key_dist=0 surface_dist=2
+    <- aster                    key_dist=0 surface_dist=2
+    <- astir                    key_dist=0 surface_dist=2
+    <- astor                    key_dist=0 surface_dist=2
+    <- astr                     key_dist=0 surface_dist=2
+    <- astur                    key_dist=0 surface_dist=2
+    <- ester                    key_dist=0 surface_dist=2
+    <- ostara                   key_dist=0 surface_dist=2
+    <- uster                    key_dist=0 surface_dist=2
+    <- wister                   key_dist=0 surface_dist=2
+    <- asteer                   key_dist=0 surface_dist=3
+    <- astore                   key_dist=0 surface_dist=3
+    <- astray                   key_dist=0 surface_dist=3
+    <- astre                    key_dist=0 surface_dist=3
+    <- auster                   key_dist=0 surface_dist=3
+
+ORBAT  [ARPT]
+    <- orbate                   key_dist=0 surface_dist=1
+    <- orbit                    key_dist=0 surface_dist=1
+    <- orbed                    key_dist=0 surface_dist=2
+    <- orbite                   key_dist=0 surface_dist=2
+    <- orbity                   key_dist=0 surface_dist=2
+    <- orpit                    key_dist=0 surface_dist=2
+    <- airboat                  key_dist=0 surface_dist=3
+    <- arabit                   key_dist=0 surface_dist=3
+    <- arbith                   key_dist=0 surface_dist=3
+    <- arbota                   key_dist=0 surface_dist=3
+    <- arbute                   key_dist=0 surface_dist=3
+    <- erept                    key_dist=0 surface_dist=3
+    <- erupt                    key_dist=0 surface_dist=3
+    <- jarbot                   key_dist=0 surface_dist=3
+    <- aerobate                 key_dist=0 surface_dist=4
+
+CASEVAC  [KSFK]
+    <- casava                   key_dist=1 surface_dist=2
+    <- casavas                  key_dist=1 surface_dist=2
+    <- caseic                   key_dist=1 surface_dist=2
+    <- casave                   key_dist=1 surface_dist=3
+    <- casavi                   key_dist=1 surface_dist=3
+    <- casefy                   key_dist=1 surface_dist=3
+    <- caseful                  key_dist=1 surface_dist=3
+    <- cassava                  key_dist=1 surface_dist=3
+    <- cassavas                 key_dist=1 surface_dist=3
+    <- cosec                    key_dist=1 surface_dist=3
+    <- cusec                    key_dist=1 surface_dist=3
+    <- caesuric                 key_dist=1 surface_dist=4
+    <- caffeic                  key_dist=1 surface_dist=4
+    <- carvage                  key_dist=1 surface_dist=4
+    <- casaque                  key_dist=1 surface_dist=4
+
+CBRN  [KPRN]
+    <- caburn                   key_dist=0 surface_dist=2
+    <- caprin                   key_dist=0 surface_dist=3
+    <- capron                   key_dist=0 surface_dist=3
+    <- cobiron                  key_dist=0 surface_dist=3
+    <- cowbarn                  key_dist=0 surface_dist=3
+    <- cabirean                 key_dist=0 surface_dist=4
+    <- cabirian                 key_dist=0 surface_dist=4
+    <- caprine                  key_dist=0 surface_dist=4
+    <- caproin                  key_dist=0 surface_dist=4
+    <- caprone                  key_dist=0 surface_dist=4
+    <- cuprein                  key_dist=0 surface_dist=4
+    <- cuprene                  key_dist=0 surface_dist=4
+    <- coprinae                 key_dist=0 surface_dist=5
+    <- cupreine                 key_dist=0 surface_dist=5
+    <- gubernia                 key_dist=0 surface_dist=5
+
+OPFOR  [APFR]
+    <- epiphora                 key_dist=0 surface_dist=5
+    <- oh pee eff oh are        key_dist=0 surface_dist=12
+    <- ephor                    key_dist=1 surface_dist=2
+    <- ofer                     key_dist=1 surface_dist=2
+    <- offer                    key_dist=1 surface_dist=2
+    <- ophir                    key_dist=1 surface_dist=2
+    <- abhor                    key_dist=1 surface_dist=3
+    <- afar                     key_dist=1 surface_dist=3
+    <- afer                     key_dist=1 surface_dist=3
+    <- afore                    key_dist=1 surface_dist=3
+    <- alfur                    key_dist=1 surface_dist=3
+    <- apair                    key_dist=1 surface_dist=3
+    <- apar                     key_dist=1 surface_dist=3
+    <- aper                     key_dist=1 surface_dist=3
+    <- appar                    key_dist=1 surface_dist=3
+
+SITREP  [STRP]
+    <- strep                    key_dist=0 surface_dist=1
+    <- satrap                   key_dist=0 surface_dist=2
+    <- strap                    key_dist=0 surface_dist=2
+    <- streep                   key_dist=0 surface_dist=2
+    <- strip                    key_dist=0 surface_dist=2
+    <- strop                    key_dist=0 surface_dist=2
+    <- satrapy                  key_dist=0 surface_dist=3
+    <- stirp                    key_dist=0 surface_dist=3
+    <- stirrup                  key_dist=0 surface_dist=3
+    <- stripe                   key_dist=0 surface_dist=3
+    <- strype                   key_dist=0 surface_dist=3
+    <- stripy                   key_dist=0 surface_dist=3
+    <- stroup                   key_dist=0 surface_dist=3
+    <- strub                    key_dist=0 surface_dist=3
+    <- sterope                  key_dist=0 surface_dist=4
+
+MEDEVAC  [MTFK]
+    <- motivic                  key_dist=0 surface_dist=4
+    <- motific                  key_dist=0 surface_dist=5
+    <- medevacs                 key_dist=1 surface_dist=1
+    <- medieval                 key_dist=1 surface_dist=2
+    <- adtevac                  key_dist=1 surface_dist=3
+    <- madhva                   key_dist=1 surface_dist=3
+    <- medaka                   key_dist=1 surface_dist=3
+    <- mediaeval                key_dist=1 surface_dist=3
+    <- medic                    key_dist=1 surface_dist=3
+    <- medica                   key_dist=1 surface_dist=3
+    <- medoc                    key_dist=1 surface_dist=3
+    <- metoac                   key_dist=1 surface_dist=3
+    <- sedovic                  key_dist=1 surface_dist=3
+    <- davach                   key_dist=1 surface_dist=4
+    <- madefy                   key_dist=1 surface_dist=4
+
+SAM  [SM]
+    <- saim                     key_dist=0 surface_dist=1
+    <- same                     key_dist=0 surface_dist=1
+    <- samh                     key_dist=0 surface_dist=1
+    <- saum                     key_dist=0 surface_dist=1
+    <- seam                     key_dist=0 surface_dist=1
+    <- sem                      key_dist=0 surface_dist=1
+    <- siam                     key_dist=0 surface_dist=1
+    <- sim                      key_dist=0 surface_dist=1
+    <- sym                      key_dist=0 surface_dist=1
+    <- soam                     key_dist=0 surface_dist=1
+    <- sum                      key_dist=0 surface_dist=1
+    <- swam                     key_dist=0 surface_dist=1
+    <- sahme                    key_dist=0 surface_dist=2
+    <- saimy                    key_dist=0 surface_dist=2
+    <- sammy                    key_dist=0 surface_dist=2
+
+IED  [AT]
+    <- yed                      key_dist=0 surface_dist=1
+    <- itd                      key_dist=0 surface_dist=1
+    <- iud                      key_dist=0 surface_dist=1
+    <- jed                      key_dist=0 surface_dist=1
+    <- wed                      key_dist=0 surface_dist=1
+    <- wied                     key_dist=0 surface_dist=1
+    <- add                      key_dist=0 surface_dist=2
+    <- aet                      key_dist=0 surface_dist=2
+    <- aid                      key_dist=0 surface_dist=2
+    <- aud                      key_dist=0 surface_dist=2
+    <- awd                      key_dist=0 surface_dist=2
+    <- awed                     key_dist=0 surface_dist=2
+    <- ead                      key_dist=0 surface_dist=2
+    <- edh                      key_dist=0 surface_dist=2
+    <- edo                      key_dist=0 surface_dist=2
+
+ATGM  [ATKM]
+    <- autogamy                 key_dist=0 surface_dist=4
+    <- outgame                  key_dist=0 surface_dist=4
+    <- aetheogam                key_dist=0 surface_dist=5
+    <- outagami                 key_dist=0 surface_dist=5
+    <- outcame                  key_dist=0 surface_dist=5
+    <- outcome                  key_dist=0 surface_dist=5
+    <- euthycomi                key_dist=0 surface_dist=7
+    <- ay tee gee em            key_dist=0 surface_dist=9
+    <- atm                      key_dist=1 surface_dist=1
+    <- atom                     key_dist=1 surface_dist=1
+    <- adam                     key_dist=1 surface_dist=2
+    <- adm                      key_dist=1 surface_dist=2
+    <- agma                     key_dist=1 surface_dist=2
+    <- akim                     key_dist=1 surface_dist=2
+    <- algum                    key_dist=1 surface_dist=2
+

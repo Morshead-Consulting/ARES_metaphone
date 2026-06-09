@@ -1,0 +1,182 @@
+# Curation report  (keep / discard the proposals below)
+# 10 targets, 248020 candidates, max_key_dist=1
+# Annotations: [KEEP] [DISCARD] [UNCERTAIN] [MANUAL NEEDED]
+# Pre-curated algorithmically — requires review by wargame-experienced personnel.
+
+ISTAR  [ASTR]
+    <- astare                   key_dist=0 surface_dist=2   [DISCARD]  non-word
+    <- aster                    key_dist=0 surface_dist=2   [KEEP]     common word, plausible ASR slip
+    <- astir                    key_dist=0 surface_dist=2   [KEEP]     real English word, plausible
+    <- astor                    key_dist=0 surface_dist=2   [DISCARD]  proper noun
+    <- astr                     key_dist=0 surface_dist=2   [DISCARD]  non-word
+    <- astur                    key_dist=0 surface_dist=2   [DISCARD]  obscure
+    <- ester                    key_dist=0 surface_dist=2   [KEEP]     common word/name, plausible ASR slip
+    <- ostara                   key_dist=0 surface_dist=2   [DISCARD]  obscure proper noun
+    <- uster                    key_dist=0 surface_dist=2   [DISCARD]  non-word
+    <- wister                   key_dist=0 surface_dist=2   [DISCARD]  non-word
+    <- asteer                   key_dist=0 surface_dist=3   [DISCARD]  non-word
+    <- astore                   key_dist=0 surface_dist=3   [DISCARD]  non-word
+    <- astray                   key_dist=0 surface_dist=3   [DISCARD]  sounds too different
+    <- astre                    key_dist=0 surface_dist=3   [DISCARD]  French, not an ASR English output
+    <- auster                   key_dist=0 surface_dist=3   [DISCARD]  obscure
+
+ORBAT  [ARPT]
+    <- orbate                   key_dist=0 surface_dist=1   [DISCARD]  non-word
+    <- orbit                    key_dist=0 surface_dist=1   [KEEP]     common word, plausible ASR slip
+    <- orbed                    key_dist=0 surface_dist=2   [DISCARD]  sounds different
+    <- orbite                   key_dist=0 surface_dist=2   [DISCARD]  non-word
+    <- orbity                   key_dist=0 surface_dist=2   [DISCARD]  non-word
+    <- orpit                    key_dist=0 surface_dist=2   [DISCARD]  non-word
+    <- airboat                  key_dist=0 surface_dist=3   [KEEP]     real compound word, sounds close
+    <- arabit                   key_dist=0 surface_dist=3   [DISCARD]  non-word
+    <- arbith                   key_dist=0 surface_dist=3   [DISCARD]  non-word
+    <- arbota                   key_dist=0 surface_dist=3   [DISCARD]  non-word
+    <- arbute                   key_dist=0 surface_dist=3   [DISCARD]  too obscure
+    <- erept                    key_dist=0 surface_dist=3   [DISCARD]  non-word
+    <- erupt                    key_dist=0 surface_dist=3   [DISCARD]  sounds too different
+    <- jarbot                   key_dist=0 surface_dist=3   [DISCARD]  non-word
+    <- aerobate                 key_dist=0 surface_dist=4   [DISCARD]  non-word
+
+CASEVAC  [KSFK]
+    <- casava                   key_dist=1 surface_dist=2   [KEEP]     variant spelling of cassava
+    <- casavas                  key_dist=1 surface_dist=2   [DISCARD]  plural, redundant if casava kept
+    <- caseic                   key_dist=1 surface_dist=2   [DISCARD]  chemistry term, too obscure
+    <- casave                   key_dist=1 surface_dist=3   [DISCARD]  non-word
+    <- casavi                   key_dist=1 surface_dist=3   [DISCARD]  non-word
+    <- casefy                   key_dist=1 surface_dist=3   [DISCARD]  non-word
+    <- caseful                  key_dist=1 surface_dist=3   [DISCARD]  non-word
+    <- cassava                  key_dist=1 surface_dist=3   [KEEP]     common word, most plausible ASR output
+    <- cassavas                 key_dist=1 surface_dist=3   [DISCARD]  plural, redundant if cassava kept
+    <- cosec                    key_dist=1 surface_dist=3   [DISCARD]  maths term, too obscure
+    <- cusec                    key_dist=1 surface_dist=3   [DISCARD]  engineering unit, too obscure
+    <- caesuric                 key_dist=1 surface_dist=4   [DISCARD]  non-word
+    <- caffeic                  key_dist=1 surface_dist=4   [DISCARD]  chemistry term, too obscure
+    <- carvage                  key_dist=1 surface_dist=4   [DISCARD]  non-word
+    <- casaque                  key_dist=1 surface_dist=4   [DISCARD]  too obscure
+# NOTE: weak result overall — add real mis-recognitions from Sprint 3 recordings.
+
+CBRN  [KPRN]
+    <- caburn                   key_dist=0 surface_dist=2   [DISCARD]  algorithm treated CBRN as a word;
+    <- caprin                   key_dist=0 surface_dist=3   [DISCARD]  CBRN is letter-by-letter — none of
+    <- capron                   key_dist=0 surface_dist=3   [DISCARD]  these are plausible ASR confusions.
+    <- cobiron                  key_dist=0 surface_dist=3   [DISCARD]
+    <- cowbarn                  key_dist=0 surface_dist=3   [DISCARD]
+    <- cabirean                 key_dist=0 surface_dist=4   [DISCARD]
+    <- cabirian                 key_dist=0 surface_dist=4   [DISCARD]
+    <- caprine                  key_dist=0 surface_dist=4   [DISCARD]
+    <- caproin                  key_dist=0 surface_dist=4   [DISCARD]
+    <- caprone                  key_dist=0 surface_dist=4   [DISCARD]
+    <- cuprein                  key_dist=0 surface_dist=4   [DISCARD]
+    <- cuprene                  key_dist=0 surface_dist=4   [DISCARD]
+    <- coprinae                 key_dist=0 surface_dist=5   [DISCARD]
+    <- cupreine                 key_dist=0 surface_dist=5   [DISCARD]
+    <- gubernia                 key_dist=0 surface_dist=5   [DISCARD]
+# MANUAL NEEDED: all candidates discarded. Add observed mis-recognitions from
+# Sprint 3 recordings (e.g. what ASR outputs when someone says "see bee are en").
+
+OPFOR  [APFR]
+    <- epiphora                 key_dist=0 surface_dist=5   [DISCARD]  medical term, too obscure
+    <- oh pee eff oh are        key_dist=0 surface_dist=12  [DISCARD]  spellout artefact, not an ASR output
+    <- ephor                    key_dist=1 surface_dist=2   [DISCARD]  ancient Greek term, too obscure
+    <- ofer                     key_dist=1 surface_dist=2   [DISCARD]  non-word
+    <- offer                    key_dist=1 surface_dist=2   [KEEP]     very common word, plausible ASR slip
+    <- ophir                    key_dist=1 surface_dist=2   [DISCARD]  biblical proper noun
+    <- abhor                    key_dist=1 surface_dist=3   [DISCARD]  sounds too different
+    <- afar                     key_dist=1 surface_dist=3   [DISCARD]  sounds too different
+    <- afer                     key_dist=1 surface_dist=3   [DISCARD]  non-word
+    <- afore                    key_dist=1 surface_dist=3   [DISCARD]  archaic, unlikely ASR output
+    <- alfur                    key_dist=1 surface_dist=3   [DISCARD]  non-word
+    <- apair                    key_dist=1 surface_dist=3   [DISCARD]  non-word
+    <- apar                     key_dist=1 surface_dist=3   [DISCARD]  non-word
+    <- aper                     key_dist=1 surface_dist=3   [DISCARD]  too obscure
+    <- appar                    key_dist=1 surface_dist=3   [DISCARD]  non-word
+
+SITREP  [STRP]
+    <- strep                    key_dist=0 surface_dist=1   [KEEP]     very common (strep throat), plausible
+    <- satrap                   key_dist=0 surface_dist=2   [DISCARD]  too obscure
+    <- strap                    key_dist=0 surface_dist=2   [KEEP]     very common word, plausible ASR slip
+    <- streep                   key_dist=0 surface_dist=2   [DISCARD]  proper noun (Meryl Streep)
+    <- strip                    key_dist=0 surface_dist=2   [KEEP]     very common word, plausible ASR slip
+    <- strop                    key_dist=0 surface_dist=2   [KEEP]     real English word, plausible
+    <- satrapy                  key_dist=0 surface_dist=3   [DISCARD]  too obscure
+    <- stirp                    key_dist=0 surface_dist=3   [DISCARD]  biological term, too obscure
+    <- stirrup                  key_dist=0 surface_dist=3   [DISCARD]  sounds too different
+    <- stripe                   key_dist=0 surface_dist=3   [KEEP]     common word, plausible
+    <- strype                   key_dist=0 surface_dist=3   [DISCARD]  non-word
+    <- stripy                   key_dist=0 surface_dist=3   [DISCARD]  informal, redundant given stripe
+    <- stroup                   key_dist=0 surface_dist=3   [DISCARD]  non-word
+    <- strub                    key_dist=0 surface_dist=3   [DISCARD]  non-word
+    <- sterope                  key_dist=0 surface_dist=4   [DISCARD]  too obscure
+
+MEDEVAC  [MTFK]
+    <- motivic                  key_dist=0 surface_dist=4   [DISCARD]  music theory term, too obscure
+    <- motific                  key_dist=0 surface_dist=5   [DISCARD]  non-word
+    <- medevacs                 key_dist=1 surface_dist=1   [KEEP]     plural of medevac, legitimate variant
+    <- medieval                 key_dist=1 surface_dist=2   [KEEP]     very common word, plausible ASR slip
+    <- adtevac                  key_dist=1 surface_dist=3   [DISCARD]  non-word
+    <- madhva                   key_dist=1 surface_dist=3   [DISCARD]  proper noun
+    <- medaka                   key_dist=1 surface_dist=3   [DISCARD]  obscure fish species
+    <- mediaeval                key_dist=1 surface_dist=3   [KEEP]     variant of medieval, plausible
+    <- medic                    key_dist=1 surface_dist=3   [KEEP]     very common word, plausible ASR slip
+    <- medica                   key_dist=1 surface_dist=3   [DISCARD]  botanical term, too obscure
+    <- medoc                    key_dist=1 surface_dist=3   [DISCARD]  wine region, too obscure
+    <- metoac                   key_dist=1 surface_dist=3   [DISCARD]  non-word
+    <- sedovic                  key_dist=1 surface_dist=3   [DISCARD]  non-word
+    <- davach                   key_dist=1 surface_dist=4   [DISCARD]  too obscure
+    <- madefy                   key_dist=1 surface_dist=4   [DISCARD]  too obscure
+
+SAM  [SM]
+    <- saim                     key_dist=0 surface_dist=1   [DISCARD]  archaic, unlikely ASR output
+    <- same                     key_dist=0 surface_dist=1   [KEEP]     very common word, plausible ASR slip
+    <- samh                     key_dist=0 surface_dist=1   [DISCARD]  non-word
+    <- saum                     key_dist=0 surface_dist=1   [DISCARD]  non-word
+    <- seam                     key_dist=0 surface_dist=1   [KEEP]     common word, plausible ASR slip
+    <- sem                      key_dist=0 surface_dist=1   [DISCARD]  non-word
+    <- siam                     key_dist=0 surface_dist=1   [DISCARD]  archaic proper noun
+    <- sim                      key_dist=0 surface_dist=1   [UNCERTAIN] common abbreviation; keep if "sim"
+    <-                                                                  appears in your comms vocabulary
+    <- sym                      key_dist=0 surface_dist=1   [DISCARD]  non-word
+    <- soam                     key_dist=0 surface_dist=1   [DISCARD]  non-word
+    <- sum                      key_dist=0 surface_dist=1   [DISCARD]  sounds too different
+    <- swam                     key_dist=0 surface_dist=1   [DISCARD]  sounds too different
+    <- sahme                    key_dist=0 surface_dist=2   [DISCARD]  non-word
+    <- saimy                    key_dist=0 surface_dist=2   [DISCARD]  non-word
+    <- sammy                    key_dist=0 surface_dist=2   [DISCARD]  informal name, unlikely
+
+IED  [AT]
+    <- yed                      key_dist=0 surface_dist=1   [DISCARD]  algorithm treated IED as a word;
+    <- itd                      key_dist=0 surface_dist=1   [DISCARD]  IED is letter-by-letter — most hits
+    <- iud                      key_dist=0 surface_dist=1   [KEEP]     are not plausible. IUD is the one
+    <- jed                      key_dist=0 surface_dist=1   [DISCARD]  exception: ASR may confuse two
+    <- wed                      key_dist=0 surface_dist=1   [DISCARD]  spoken acronyms.
+    <- wied                     key_dist=0 surface_dist=1   [DISCARD]
+    <- add                      key_dist=0 surface_dist=2   [DISCARD]
+    <- aet                      key_dist=0 surface_dist=2   [DISCARD]
+    <- aid                      key_dist=0 surface_dist=2   [DISCARD]
+    <- aud                      key_dist=0 surface_dist=2   [DISCARD]
+    <- awd                      key_dist=0 surface_dist=2   [DISCARD]
+    <- awed                     key_dist=0 surface_dist=2   [DISCARD]
+    <- ead                      key_dist=0 surface_dist=2   [DISCARD]
+    <- edh                      key_dist=0 surface_dist=2   [DISCARD]
+    <- edo                      key_dist=0 surface_dist=2   [DISCARD]
+# MANUAL NEEDED: add real mis-recognitions from Sprint 3 recordings
+# (e.g. what ASR outputs when "I E D" is spoken in a sentence).
+
+ATGM  [ATKM]
+    <- autogamy                 key_dist=0 surface_dist=4   [DISCARD]  botanical term, too obscure
+    <- outgame                  key_dist=0 surface_dist=4   [DISCARD]  non-word
+    <- aetheogam                key_dist=0 surface_dist=5   [DISCARD]  non-word
+    <- outagami                 key_dist=0 surface_dist=5   [DISCARD]  proper noun
+    <- outcame                  key_dist=0 surface_dist=5   [DISCARD]  non-word
+    <- outcome                  key_dist=0 surface_dist=5   [DISCARD]  sounds too different
+    <- euthycomi                key_dist=0 surface_dist=7   [DISCARD]  non-word
+    <- ay tee gee em            key_dist=0 surface_dist=9   [DISCARD]  spellout artefact, not an ASR output
+    <- atm                      key_dist=1 surface_dist=1   [KEEP]     common abbreviation, plausible slip
+    <- atom                     key_dist=1 surface_dist=1   [DISCARD]  sounds too different
+    <- adam                     key_dist=1 surface_dist=2   [DISCARD]  proper noun
+    <- adm                      key_dist=1 surface_dist=2   [UNCERTAIN] Admiral abbreviation — keep if ADM
+    <-                                                                  appears in your comms/documents
+    <- agma                     key_dist=1 surface_dist=2   [DISCARD]  phonetics term, too obscure
+    <- akim                     key_dist=1 surface_dist=2   [DISCARD]  proper noun
+    <- algum                    key_dist=1 surface_dist=2   [DISCARD]  biblical term, too obscure
+# MANUAL NEEDED: add real mis-recognitions from Sprint 3 recordings.

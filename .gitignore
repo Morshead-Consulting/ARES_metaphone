@@ -1,6 +1,9 @@
 # Runtime-generated word list cache (downloaded by --use-wordlist)
 english_words_cache.txt
 
+# Timestamped output files from --output-dir
+data/reports/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]

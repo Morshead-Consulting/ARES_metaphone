@@ -2,9 +2,14 @@
 
 [![Tests](https://github.com/Morshead-Consulting/ARES_metaphone/actions/workflows/test.yml/badge.svg)](https://github.com/Morshead-Consulting/ARES_metaphone/actions/workflows/test.yml)
 
-Phase 1 of DN-PHON-001: generate candidate ASR confusions for military terms
-using Double Metaphone + Levenshtein, for expert curation into the CTC-WS
-context file.
+DN-PHON-001: generate candidate ASR confusions for military terms, for
+expert curation into the CTC-WS context file.
+
+Each acronym is first segmented into how it is actually **spoken** — ISTAR
+as "eye star", CBRN spelled out as "see bee are en" — then Double Metaphone
++ Levenshtein find English words that sound like those spoken forms. Matching
+on speech rather than spelling is what lets the tool handle letter-by-letter
+acronyms (CBRN, IED, ATGM) that keying the raw string cannot.
 
 ## Install (one-time)
 
@@ -18,6 +23,7 @@ uv sync
 Or with plain pip:
 ```
 pip install metaphone python-Levenshtein
+pip install wordfreq          # optional, enables common-word-first ranking
 ```
 
 ## Run tests
@@ -26,11 +32,32 @@ pip install metaphone python-Levenshtein
 uv run pytest tests/ -v
 ```
 
+The suite includes a **gold standard**: the real spoken pronunciation of each
+target acronym (ISTAR -> "eye star", CBRN -> "see bee are en", ...) must appear
+among the proposals, and the previously un-handled cases (CBRN, IED, ATGM) must
+now match. See `tests/test_pronounce_seg.py`.
+
 ## Quick start
 
 ```
-python altspell_gen.py --targets data\targets.txt --candidates data\candidates.txt --use-spellouts --report
+python altspell_gen.py --targets data\targets.txt --use-wordlist --max-key-dist 0 --max-per-target 10 --report
 ```
+
+## How pronunciation segmentation works
+
+A familiar word embedded in an acronym attracts a hybrid pronunciation: the
+`STAR` in ISTAR gives "eye-star", not "eye-ess-tee-ay-are". An acronym with no
+pronounceable element (no vowel) is spelled out letter by letter: CBRN ->
+"see-bee-are-en". The tool produces the **k-best** spoken forms per acronym
+(it does not guess a single winner — eye-STAR vs iss-tar is a genuine
+ambiguity the reviewer resolves), always including the full spell-out as a
+fallback. Matching then runs on every spoken form, on both the target and any
+acronym-like candidate (so IED can match IUD through their spoken forms).
+
+This applies to anything `--targets` flags as an acronym (all-caps, 2-8
+letters). Ordinary words are matched on their raw string as before. To turn
+segmentation off entirely and revert to raw-string matching, use
+`--no-pronounce-seg`.
 
 ## Candidate sources
 
@@ -40,17 +67,21 @@ finds confusable candidates from any combination of three sources:
 | Flag | Source | Network? |
 |---|---|---|
 | `--candidates FILE` | your own list, one word/phrase per line | no |
-| `--use-spellouts` | auto letter spell-outs, e.g. `IED -> "eye ee dee"` | no |
+| `--use-spellouts` | letter spell-outs as candidates (largely superseded) | no |
 | `--use-wordlist` | ~248k-word English list, cached after first download | first run only |
 
 Combine freely. Your `--candidates` entries take priority on de-duplication.
+
+> **Note:** `--use-spellouts` is retained only for pipeline verification.
+> Spell-outs are now generated automatically on the *target* side by
+> segmentation, so you no longer need them as candidates.
 
 ## Windows usage
 
 From the project directory, in Command Prompt:
 
 ```
-python altspell_gen.py --targets data\targets.txt --use-spellouts --use-wordlist ^
+python altspell_gen.py --targets data\targets.txt --use-wordlist ^
     --max-key-dist 0 --max-per-target 8 --report
 ```
 
@@ -68,7 +99,9 @@ python altspell_gen.py --targets data\targets.txt --wordlist-file mywords.txt ^
     --no-download --report
 ```
 
-Or just use `--use-spellouts` and `--candidates data\candidates.txt`, which never touch the network.
+Segmentation, Double Metaphone and Levenshtein are all fully offline. Only the
+optional first-time word-list download and the optional `wordfreq` package
+touch the network; neither is required to run.
 
 ## Tuning
 
@@ -77,15 +110,31 @@ Or just use `--use-spellouts` and `--candidates data\candidates.txt`, which neve
 - `--max-per-target 8` caps proposals per term — recommended with the word
   list, which otherwise returns dozens of obscure dictionary words.
 - `--max-surface-dist N` drops candidates whose spelling is wildly different
-  in length from the target.
+  in length from the target. Useful for short spell-out keys (e.g. IED), whose
+  coarse phonetic key can otherwise attract short high-frequency words.
 - `--wordlist-min-len` / `--wordlist-max-len` bound dictionary word length
   (default 3-10). Acronyms rarely collide with very long words.
+- `--no-pronounce-seg` reverts to pre-segmentation raw-string matching.
+
+## Ranking
+
+If `wordfreq` is installed, proposals are ranked **common-word-first** — the
+criterion that actually decides curation (a recogniser is far likelier to emit
+a common word than an obscure one), and the report shows a Zipf score per
+candidate (z>=3.5 common, z<2 obscure, z=0 not a known word). Without
+`wordfreq`, ranking falls back to phonetic- then surface-distance, unchanged.
+
+> **Licence note (Sprint 1 review):** `wordfreq` code is MIT, but its bundled
+> frequency *data* aggregates several CC-licensed sources. It is a **dev-time
+> ranking aid only** — nothing from it ships in the delivered system.
 
 ## Two output modes
 
-- `--report` : human-readable curation sheet (target, phonetic key, ranked
-  proposals with distances). This is what the wargame-experienced reviewer
-  marks up. Also makes good bid evidence.
+- `--report` : human-readable curation sheet. Each target shows its spoken
+  forms, then ranked proposals with phonetic/surface distances, a Zipf score
+  (if `wordfreq` is present), and a `via "..."` note showing which spoken form
+  produced the match. This is what the wargame-experienced reviewer marks up,
+  and it makes good bid evidence.
 - default : raw `target_spelling1_spelling2_...` lines for the CTC-WS file.
 
 ## Remember

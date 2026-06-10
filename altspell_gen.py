@@ -168,6 +168,15 @@ def _min_key_dist(keys_a, keys_b) -> int:
     return min(Levenshtein.distance(x, y) for x in keys_a for y in keys_b)
 
 
+def key_edit_distance(a: str, b: str) -> int:
+    """Return the minimum phonetic-key edit distance between two surface strings.
+    Returns 99 if either string produces no phonetic key."""
+    keys_a, keys_b = phonetic_keys(a), phonetic_keys(b)
+    if not keys_a or not keys_b:
+        return 99
+    return _min_key_dist(keys_a, keys_b)
+
+
 def generate_confusions(targets, candidates, max_key_dist=1,
                         max_surface_dist=None, max_per_target=None,
                         use_seg=True):

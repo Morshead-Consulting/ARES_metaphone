@@ -70,7 +70,7 @@ def test_key_edit_distance_unrelated_words_above_threshold():
 def test_generate_confusions_excludes_self():
     results = generate_confusions(["SAM"], ["SAM", "psalm"], max_key_dist=1)
     hits = results.get("SAM", [])
-    assert all(c.lower() != "sam" for c, _, _ in hits)
+    assert all(c.lower() != "sam" for c, _, _, _ in hits)
 
 def test_generate_confusions_finds_known_confusable():
     results = generate_confusions(["SAM"], ["psalm"], max_key_dist=1)
@@ -87,7 +87,7 @@ def test_generate_confusions_max_surface_dist_filters():
         ["SAM"], ["psalm"], max_key_dist=1, max_surface_dist=1
     )
     hits = results.get("SAM", [])
-    assert all(sd <= 1 for _, _, sd in hits)
+    assert all(sd <= 1 for _, _, sd, _ in hits)
 
 def test_generate_confusions_no_match_absent_from_results():
     results = generate_confusions(["XYZZY"], ["cat", "dog"], max_key_dist=0)

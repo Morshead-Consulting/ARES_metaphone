@@ -38,6 +38,7 @@ The cache file lives next to this script by default.
 """
 
 import argparse
+import datetime
 import os
 import sys
 import urllib.request
@@ -318,6 +319,10 @@ def main():
 
     ap.add_argument("--report", action="store_true",
                     help="human-readable curation report instead of raw lines")
+    ap.add_argument("--output-dir",
+                    help="write output to a timestamped file in this directory "
+                         "instead of stdout; filename is derived from the targets "
+                         "file and the current time")
     args = ap.parse_args()
 
     if not (args.candidates or args.use_spellouts or args.use_wordlist):
@@ -342,15 +347,16 @@ def main():
         use_seg=use_seg,
     )
 
+    output_lines = []
     if args.report:
-        print("# Curation report  (keep / discard the proposals below)")
-        print(f"# {len(targets)} targets, {len(candidates)} candidates, "
-              f"max_key_dist={args.max_key_dist}, "
-              f"pronounce_seg={'on' if use_seg else 'off'}\n")
+        output_lines.append("# Curation report  (keep / discard the proposals below)")
+        output_lines.append(f"# {len(targets)} targets, {len(candidates)} candidates, "
+                            f"max_key_dist={args.max_key_dist}, "
+                            f"pronounce_seg={'on' if use_seg else 'off'}\n")
         for target, hits in results.items():
             forms = term_forms(target, use_seg)
             spoken = " | ".join(f'"{r}"' for r, _ in forms)
-            print(f"{target}  spoken as: {spoken}")
+            output_lines.append(f"{target}  spoken as: {spoken}")
             for cand, kd, sd, via in hits:
                 note = ""
                 if via is not None:
@@ -363,16 +369,30 @@ def main():
                     if parts:
                         note = "  " + " ".join(parts)
                 freq = f" zipf={zipf(cand):.1f}" if _zipf else ""
-                print(f"    <- {cand:24s} key_dist={kd} "
-                      f"surface_dist={sd}{freq}{note}")
-            print()
+                output_lines.append(f"    <- {cand:24s} key_dist={kd} "
+                                    f"surface_dist={sd}{freq}{note}")
+            output_lines.append("")
         missing = [t for t in targets if t not in results]
         if missing:
-            print("# No candidates matched (add manually if needed):")
-            print("#   " + ", ".join(missing))
+            output_lines.append("# No candidates matched (add manually if needed):")
+            output_lines.append("#   " + ", ".join(missing))
     else:
-        for line in emit_ctcws(results):
-            print(line)
+        output_lines.extend(emit_ctcws(results))
+
+    if args.output_dir:
+        targets_stem = os.path.splitext(os.path.basename(args.targets))[0]
+        timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+        suffix = "curation_report.txt" if args.report else "ctcws.txt"
+        out_name = f"{targets_stem}_{timestamp}_{suffix}"
+        out_path = os.path.join(args.output_dir, out_name)
+        os.makedirs(args.output_dir, exist_ok=True)
+        with open(out_path, "w", encoding="utf-8") as fh:
+            fh.write("\n".join(output_lines))
+            if output_lines:
+                fh.write("\n")
+        sys.stderr.write(f"Output written to: {out_path}\n")
+    else:
+        print("\n".join(output_lines))
 
 
 if __name__ == "__main__":

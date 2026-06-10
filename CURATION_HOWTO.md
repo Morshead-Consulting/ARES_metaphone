@@ -19,6 +19,17 @@ spoken form produced it. The authoritative design rationale is in
 ## How to regenerate it
 
 ```
+uv run python altspell_gen.py --targets data/targets.txt --use-wordlist --max-key-dist 0 --max-per-target 15 --report --output-dir data/reports
+```
+
+The `--output-dir` flag writes the output to a timestamped file in the given
+directory instead of stdout. The filename is derived from the targets file and
+the current time, e.g. `targets_20260610_143022_curation_report.txt`, so runs
+from different inputs are kept distinct. The path is echoed to stderr.
+
+Omit `--output-dir` to write to stdout as before (redirect with `>`):
+
+```
 uv run python altspell_gen.py --targets data/targets.txt --use-wordlist --max-key-dist 0 --max-per-target 15 --report > data/curation_report.txt
 ```
 
@@ -89,8 +100,11 @@ Once curated, drop the `--report` flag to emit lines in the format consumed by
 the CTC-WS context-biasing layer:
 
 ```
-uv run python altspell_gen.py --targets data/targets.txt --use-wordlist --max-key-dist 0 --max-per-target 15
+uv run python altspell_gen.py --targets data/targets.txt --use-wordlist --max-key-dist 0 --max-per-target 15 --output-dir data/reports
 ```
+
+Without `--report` the auto-named file uses the suffix `_ctcws.txt`, e.g.
+`targets_20260610_143022_ctcws.txt`.
 
 Each output line has the form:
 

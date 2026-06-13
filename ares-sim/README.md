@@ -31,17 +31,21 @@ pre-deployment decision, and we can quantify it before buying any hardware.**
 python run_poc.py --csv results.csv
 ```
 
-**Dependencies (pinned):**
+**Dependencies** are declared in `pyproject.toml` (direct deps only) and pinned in
+`uv.lock` (full transitive set). Both files are committed per Morshead Consulting
+Python dependency management best practice.
 
-| Package            | Version  |
-|--------------------|----------|
-| pyroomacoustics    | 0.10.1   |
-| numpy              | 2.4.6    |
-| scipy              | 1.17.1   |
-| matplotlib         | 3.11.0   |
-| pyyaml             | (latest) |
+Install with [uv](https://docs.astral.sh/uv/):
 
-Install: `.venv/Scripts/pip install -r requirements.txt`
+```
+uv sync --extra dev
+```
+
+Or activate the venv and run directly:
+
+```
+uv run python run_poc.py --csv
+```
 
 ---
 

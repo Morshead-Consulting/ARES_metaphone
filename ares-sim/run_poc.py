@@ -19,6 +19,7 @@ and low-energy-background scenarios.
 import argparse
 import csv
 import sys
+from datetime import datetime
 from pathlib import Path
 
 import yaml
@@ -101,8 +102,9 @@ def main() -> None:
         help="Path to room YAML config"
     )
     parser.add_argument(
-        "--csv", default=None, metavar="PATH",
-        help="Save results to CSV"
+        "--csv", nargs="?", const="auto", default=None, metavar="PATH",
+        help="Save results to CSV. Omit PATH to auto-generate a timestamped "
+             "file in results/ (e.g. results/20260613_143022_poc_sweep.csv)."
     )
     parser.add_argument(
         "--seed", type=int, default=42,
@@ -136,7 +138,15 @@ def main() -> None:
     print_table(results)
 
     if args.csv:
-        save_csv(results, Path(args.csv))
+        if args.csv == "auto":
+            results_dir = Path(__file__).parent / "results"
+            results_dir.mkdir(exist_ok=True)
+            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+            csv_path = results_dir / f"{timestamp}_poc_sweep.csv"
+        else:
+            csv_path = Path(args.csv)
+            csv_path.parent.mkdir(parents=True, exist_ok=True)
+        save_csv(results, csv_path)
 
 
 if __name__ == "__main__":

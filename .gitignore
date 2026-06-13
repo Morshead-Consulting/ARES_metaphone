@@ -1,3 +1,6 @@
+# ARES-SIM-001 simulation results (timestamped CSVs)
+ares-sim/results/*.csv
+
 # Runtime-generated word list cache (downloaded by --use-wordlist)
 english_words_cache.txt
 

@@ -22,7 +22,7 @@ uv sync
 
 Or with plain pip:
 ```
-pip install metaphone python-Levenshtein
+pip install metaphone rapidfuzz
 pip install wordfreq          # optional, enables common-word-first ranking
 ```
 
@@ -39,9 +39,14 @@ now match. See `tests/test_pronounce_seg.py`.
 
 ## Quick start
 
+Run from the **project root** (the directory containing `altspell_gen.py`), not from inside `data\`:
+
 ```
-python altspell_gen.py --targets data\targets.txt --use-wordlist --max-key-dist 0 --max-per-target 10 --report
+cd C:\Users\rftwo\Documents\ARES_metaphone
+uv run python altspell_gen.py --targets data\targets.txt --use-wordlist --max-key-dist 0 --max-per-target 10 --report
 ```
+
+If you run from a subdirectory Python will report `can't open file '...\altspell_gen.py'` — always `cd` to the project root first.
 
 ## How pronunciation segmentation works
 
@@ -78,10 +83,10 @@ Combine freely. Your `--candidates` entries take priority on de-duplication.
 
 ## Windows usage
 
-From the project directory, in Command Prompt:
+From the **project root directory**, in Command Prompt:
 
 ```
-python altspell_gen.py --targets data\targets.txt --use-wordlist ^
+uv run python altspell_gen.py --targets data\targets.txt --use-wordlist ^
     --max-key-dist 0 --max-per-target 8 --report
 ```
 

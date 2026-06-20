@@ -43,7 +43,7 @@ import os
 import sys
 import urllib.request
 from metaphone import doublemetaphone
-import Levenshtein
+from rapidfuzz.distance import Levenshtein
 
 from pronounce_seg import spoken_forms
 

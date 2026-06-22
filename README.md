@@ -5,11 +5,13 @@
 DN-PHON-001: generate candidate ASR confusions for military terms, for
 expert curation into the CTC-WS context file.
 
-Each acronym is first segmented into how it is actually **spoken** — ISTAR
-as "eye star", CBRN spelled out as "see bee are en" — then Double Metaphone
-+ Levenshtein find English words that sound like those spoken forms. Matching
-on speech rather than spelling is what lets the tool handle letter-by-letter
-acronyms (CBRN, IED, ATGM) that keying the raw string cannot.
+The tool converts each military term into its spoken form before matching.
+ISTAR becomes "eye star"; CBRN, which has no pronounceable cluster, is spelled
+out letter-by-letter as "see bee are en". It then uses Double Metaphone and
+Levenshtein distance to find English words that sound like those spoken forms.
+This spoken-form approach is what makes the tool effective for letter-by-letter
+acronyms (CBRN, IED, ATGM): matching on the raw spelling of those strings would
+find nothing useful.
 
 ## Install (one-time)
 
@@ -42,7 +44,6 @@ now match. See `tests/test_pronounce_seg.py`.
 Run from the **project root** (the directory containing `altspell_gen.py`), not from inside `data\`:
 
 ```
-cd C:\Users\rftwo\Documents\ARES_metaphone
 uv run python altspell_gen.py --targets data\targets.txt --use-wordlist --max-key-dist 0 --max-per-target 10 --report
 ```
 
@@ -129,22 +130,45 @@ a common word than an obscure one), and the report shows a Zipf score per
 candidate (z>=3.5 common, z<2 obscure, z=0 not a known word). Without
 `wordfreq`, ranking falls back to phonetic- then surface-distance, unchanged.
 
-> **Licence note (Sprint 1 review):** `wordfreq` code is MIT, but its bundled
-> frequency *data* aggregates several CC-licensed sources. It is a **dev-time
-> ranking aid only** — nothing from it ships in the delivered system.
+## Output
 
-## Two output modes
+### Flags
 
-- `--report` : human-readable curation sheet. Each target shows its spoken
-  forms, then ranked proposals with phonetic/surface distances, a Zipf score
-  (if `wordfreq` is present), and a `via "..."` note showing which spoken form
-  produced the match. This is what the wargame-experienced reviewer marks up,
-  and it makes good bid evidence.
-- default : raw `target_spelling1_spelling2_...` lines for the CTC-WS file.
+| Flag | Description |
+|---|---|
+| `--targets FILE` | file listing target military terms, one per line (required) |
+| `--candidates FILE` | optional reviewer-supplied candidate list |
+| `--use-wordlist` | match against the ~248k English word list |
+| `--max-key-dist N` | phonetic distance threshold (0 = exact match, 1 = near) |
+| `--max-per-target N` | cap on proposals returned per term |
+| `--max-surface-dist N` | cap on character-level edit distance |
+| `--report` | human-readable output instead of raw CTC-WS lines |
+| `--output-dir DIR` | write output to a timestamped file in DIR instead of the terminal |
+| `--no-pronounce-seg` | disable spoken-form conversion; match on raw spelling |
+| `--no-download` | prevent any network access (air-gapped use) |
 
-## Remember
+### Modes
 
-This is an **assist to expert curation, not a replacement**. The tool
+**Without `--report`** (default): the tool prints raw `target_spelling1_spelling2_...`
+lines to the terminal, ready to paste into the CTC-WS context file.
+
+**With `--report`**: the tool prints a human-readable curation sheet. For each
+target term it shows the spoken forms the tool derived, then a ranked list of
+phonetically similar English words with phonetic and surface distances, a Zipf
+frequency score (if `wordfreq` is installed), and a `via "..."` note showing
+which spoken form produced the match. The reviewer reads this output and selects
+which candidates are genuine plausible confusions — words the recogniser might
+actually emit in place of the military term — discarding the rest. Accepted
+candidates are added to `--candidates` for the next run or entered directly
+into the CTC-WS context file.
+
+By default `--report` prints to the terminal. To save the output to a file,
+add `--output-dir results\` and the tool writes a timestamped file to that
+directory instead.
+
+## Expert curation
+
+This tool is an assist to expert curation, not a replacement. The tool
 proposes; the human keeps the plausible confusions, discards the noise, and
 adds real mis-recognitions the algorithms miss. The Sprint 3 recordings feed
 the actual observed errors back into `--candidates`, closing the loop.

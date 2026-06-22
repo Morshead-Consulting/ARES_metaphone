@@ -175,3 +175,6 @@ This tool is an assist to expert curation, not a replacement. The tool
 proposes; the human keeps the plausible confusions, discards the noise, and
 adds real mis-recognitions the algorithms miss. Observed errors from real
 recordings feed back into `--candidates`, closing the loop.
+
+For algorithm internals, data shapes, and tuning guidance, see
+[docs/altspell_gen.md](docs/altspell_gen.md).

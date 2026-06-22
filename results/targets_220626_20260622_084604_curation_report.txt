@@ -1,0 +1,90 @@
+# Curation report  (keep / discard the proposals below)
+# 8 targets, 248010 candidates, max_key_dist=0, pronounce_seg=on
+
+BRDM  spoken as: "bee are dee em"
+    <- boredom                  key_dist=0 surface_dist=3 zipf=3.5  via "bee are dee em"
+    <- prudhomme                key_dist=0 surface_dist=6 zipf=2.1  via "bee are dee em"
+    <- biorhythm                key_dist=0 surface_dist=6 zipf=1.5  via "bee are dee em"
+    <- peridium                 key_dist=0 surface_dist=5 zipf=1.4  via "bee are dee em"
+    <- pretium                  key_dist=0 surface_dist=5 zipf=1.3  via "bee are dee em"
+    <- protium                  key_dist=0 surface_dist=5 zipf=1.2  via "bee are dee em"
+    <- beardom                  key_dist=0 surface_dist=3 zipf=0.0  via "bee are dee em"
+    <- birddom                  key_dist=0 surface_dist=3 zipf=0.0  via "bee are dee em"
+    <- boerdom                  key_dist=0 surface_dist=3 zipf=0.0  via "bee are dee em"
+    <- boyardom                 key_dist=0 surface_dist=4 zipf=0.0  via "bee are dee em"
+
+BMP  spoken as: "bee em pee"
+    <- bomb                     key_dist=0 surface_dist=2 zipf=4.6  via "bee em pee"
+    <- pump                     key_dist=0 surface_dist=2 zipf=4.3  via "bee em pee"
+    <- bump                     key_dist=0 surface_dist=1 zipf=4.0  via "bee em pee"
+    <- bamboo                   key_dist=0 surface_dist=4 zipf=3.6  via "bee em pee"
+    <- bombay                   key_dist=0 surface_dist=4 zipf=3.6  via "bee em pee"
+    <- pimp                     key_dist=0 surface_dist=2 zipf=3.4  via "bee em pee"
+    <- bumpy                    key_dist=0 surface_dist=2 zipf=3.2  via "bee em pee"
+    <- pompey                   key_dist=0 surface_dist=4 zipf=3.0  via "bee em pee"
+    <- pompeii                  key_dist=0 surface_dist=5 zipf=3.0  via "bee em pee"
+    <- pomp                     key_dist=0 surface_dist=2 zipf=3.0  via "bee em pee"
+
+BTR  spoken as: "bee tee are"
+    <- better                   key_dist=0 surface_dist=3 zipf=5.8  via "bee tee are"
+    <- peter                    key_dist=0 surface_dist=3 zipf=4.9  via "bee tee are"
+    <- battery                  key_dist=0 surface_dist=4 zipf=4.5  via "bee tee are"
+    <- butter                   key_dist=0 surface_dist=3 zipf=4.4  via "bee tee are"
+    <- poetry                   key_dist=0 surface_dist=4 zipf=4.4  via "bee tee are"
+    <- bother                   key_dist=0 surface_dist=3 zipf=4.4  via "bee tee are"
+    <- powder                   key_dist=0 surface_dist=5 zipf=4.2  via "bee tee are"
+    <- bitter                   key_dist=0 surface_dist=3 zipf=4.2  via "bee tee are"
+    <- potter                   key_dist=0 surface_dist=4 zipf=4.1  via "bee tee are"
+    <- pedro                    key_dist=0 surface_dist=4 zipf=3.8  via "bee tee are"
+
+SCATMIN  spoken as: "scatmin" | "scat min" | "ess catmin" | "scatmi en" | "ess see ay tee em eye en"
+    <- isostemony               key_dist=0 surface_dist=6 zipf=0.0  via "ess see ay tee em eye en"
+
+MBT  spoken as: "em bee tee"
+    <- empty                    key_dist=0 surface_dist=3 zipf=4.6  via "em bee tee"
+    <- jumped                   key_dist=0 surface_dist=5 zipf=4.2  via "em bee tee"
+    <- empathy                  key_dist=0 surface_dist=5 zipf=3.7  via "em bee tee"
+    <- embody                   key_dist=0 surface_dist=4 zipf=3.2  via "em bee tee"
+    <- impede                   key_dist=0 surface_dist=5 zipf=3.1  via "em bee tee"
+    <- embed                    key_dist=0 surface_dist=3 zipf=2.9  via "em bee tee"
+    <- imbued                   key_dist=0 surface_dist=4 zipf=2.9  via "em bee tee"
+    <- amputee                  key_dist=0 surface_dist=5 zipf=2.7  via "em bee tee"
+    <- embiid                   key_dist=0 surface_dist=4 zipf=2.6  via "em bee tee"
+    <- wombat                   key_dist=0 surface_dist=3 zipf=2.6  via "em bee tee"
+
+UAS  spoken as: "uas" | "you as" | "ua ess" | "you ay ess"
+    <- was                      key_dist=0 surface_dist=1 zipf=6.8
+    <- use                      key_dist=0 surface_dist=2 zipf=5.8
+    <- yes                      key_dist=0 surface_dist=2 zipf=5.5
+    <- easy                     key_dist=0 surface_dist=2 zipf=5.3
+    <- issue                    key_dist=0 surface_dist=4 zipf=5.2
+    <- eyes                     key_dist=0 surface_dist=3 zipf=5.2
+    <- whose                    key_dist=0 surface_dist=4 zipf=5.1
+    <- ways                     key_dist=0 surface_dist=2 zipf=5.1
+    <- ass                      key_dist=0 surface_dist=2 zipf=5.0
+    <- ice                      key_dist=0 surface_dist=3 zipf=5.0
+
+OWE  spoken as: "owe" | "oh we" | "oh double you ee"
+    <- you                      key_dist=0 surface_dist=3 zipf=7.0
+    <- who                      key_dist=0 surface_dist=3 zipf=6.3
+    <- way                      key_dist=0 surface_dist=3 zipf=6.0
+    <- why                      key_dist=0 surface_dist=3 zipf=5.9
+    <- away                     key_dist=0 surface_dist=3 zipf=5.6
+    <- yeah                     key_dist=0 surface_dist=4 zipf=5.4
+    <- eye                      key_dist=0 surface_dist=2 zipf=5.0
+    <- wow                      key_dist=0 surface_dist=2 zipf=5.0
+    <- joe                      key_dist=0 surface_dist=2 zipf=4.8
+    <- iii                      key_dist=0 surface_dist=3 zipf=4.6
+
+AD  spoken as: "ad" | "ay dee"
+    <- out                      key_dist=0 surface_dist=3 zipf=6.4
+    <- what                     key_dist=0 surface_dist=3 zipf=6.4
+    <- yet                      key_dist=0 surface_dist=3 zipf=5.5
+    <- white                    key_dist=0 surface_dist=5 zipf=5.5
+    <- idea                     key_dist=0 surface_dist=3 zipf=5.4
+    <- wait                     key_dist=0 surface_dist=3 zipf=5.3
+    <- eat                      key_dist=0 surface_dist=2 zipf=5.1
+    <- add                      key_dist=0 surface_dist=1 zipf=5.1
+    <- eight                    key_dist=0 surface_dist=5 zipf=5.0
+    <- weight                   key_dist=0 surface_dist=6 zipf=5.0
+

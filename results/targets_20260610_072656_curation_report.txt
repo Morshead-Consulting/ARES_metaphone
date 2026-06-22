@@ -1,0 +1,51 @@
+# Curation report  (keep / discard the proposals below)
+# 10 targets, 29 candidates, max_key_dist=1, pronounce_seg=on
+
+ISTAR  spoken as: "istar" | "is tar" | "ist ar" | "eye star" | "eye ess tee ay are"
+    <- I star                   key_dist=0 surface_dist=1
+    <- ice tar                  key_dist=0 surface_dist=3
+    <- eye star                 key_dist=0 surface_dist=4
+
+ORBAT  spoken as: "orbat" | "or bat" | "orb at" | "orba tee" | "oh are bee ay tee"
+    <- orbit                    key_dist=0 surface_dist=1
+    <- or bat                   key_dist=0 surface_dist=1
+    <- all but                  key_dist=1 surface_dist=5
+
+CASEVAC  spoken as: "casevac" | "case vac" | "ca sevac" | "cas evac" | "see ay ess ee vee ay see"
+    <- casa vac                 key_dist=0 surface_dist=2
+    <- case of acne             key_dist=1 surface_dist=6
+
+CBRN  spoken as: "see bee are en"
+    <- sea burn                 key_dist=0 surface_dist=5  via "see bee are en"
+    <- see burn                 key_dist=0 surface_dist=5  via "see bee are en"
+    <- sea bee are en           key_dist=0 surface_dist=11  via "see bee are en"
+
+OPFOR  spoken as: "opfor" | "op for" | "opfo are" | "op eff or" | "oh pee eff oh are"
+    <- op for                   key_dist=0 surface_dist=1
+    <- up for                   key_dist=0 surface_dist=2
+    <- off for                  key_dist=1 surface_dist=3
+
+SITREP  spoken as: "sitrep" | "sit rep" | "si trep" | "ess itrep" | "ess eye tee are ee pee"
+    <- sit rep                  key_dist=0 surface_dist=1
+    <- sit rip                  key_dist=0 surface_dist=2
+    <- city rep                 key_dist=0 surface_dist=3
+    <- I star                   key_dist=1 surface_dist=6  via "ess itrep"
+    <- ice tar                  key_dist=1 surface_dist=7  via "ess itrep"
+    <- eye star                 key_dist=1 surface_dist=8  via "ess itrep"
+
+MEDEVAC  spoken as: "medevac" | "med evac" | "mede vac" | "me devac" | "em ee dee ee vee ay see"
+    <- medi vac                 key_dist=0 surface_dist=2
+    <- med a vac                key_dist=0 surface_dist=3
+    <- medic vac                key_dist=1 surface_dist=3
+
+SAM  spoken as: "sam" | "ess am" | "sa em" | "ess ay em"
+    <- psalm                    key_dist=1 surface_dist=2
+
+IED  spoken as: "ied" | "eye ed" | "ie dee" | "eye ee dee"
+    <- i e d                    key_dist=0 surface_dist=2
+    <- eyed                     key_dist=0 surface_dist=2
+
+ATGM  spoken as: "at gee em" | "ay tee gee em"
+    <- at gm                    key_dist=0 surface_dist=1  via "at gee em"
+    <- a teagium                key_dist=0 surface_dist=5  via "at gee em"
+

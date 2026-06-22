@@ -194,7 +194,7 @@ The CTC-WS context file is the end product of the whole workflow. It is what
 you load into the ASR engine's context-biasing layer to tell it which
 confusable words to watch for alongside each target acronym.
 
-### Step 1 — generate the raw context file
+### Step 1 — generate the pre-curation context file
 
 Run the same command used to produce the curation report, but omit `--report`:
 
@@ -212,9 +212,35 @@ TARGET_spelling1_spelling2_...
 One line per target, with the acronym and all its proposed confusable
 candidates joined by underscores.
 
+Double Metaphone and Levenshtein distance **are** applied here — the output is
+not unfiltered. With `--max-key-dist 0` only candidates whose Double Metaphone
+key is **identical** to one of the target's spoken forms pass through.
+`--max-per-target 15` then caps the list at 15 per target, ranked by phonetic
+distance then word frequency then surface closeness (same ordering as the
+report). A typical file looks like this:
+
+```
+ISTAR_astare_aster_astir_astor_astr_astur_ester_ostara_uster_wister_asteer_astore_astray_astre_auster
+ORBAT_orbate_orbit_orbed_orbite_orbity_orpit_airboat_arabit_arbith_arbota_arbute_erept_erupt_jarbot_aerobate
+CASEVAC_zyzzyvas_sisyphus_zizyphus
+CBRN_spurn_suborn_cibarian_cyprian_cyprina_cyprine_sabrina_saprin_speron_spiran_spoorn_sprain_suberin_zebrina_zebrine
+OPFOR_epiphora
+SITREP_strep_satrap_strap_streep_strip_strop_estrepe_satrapy_stirp_stirrup_stripe_strype_stripy_stroup_strub
+SAM_saim_same_samh_saum_seam_sem_siam_sim_sym_soam_sum_swam_asem_assam_ism
+IED_yed_itd_iud_jed_wed_wied_add_aet_aid_aud_awd_awed_ead_edh_edo
+ATGM_autogamy_outgame_aetheogam_outagami_outcame_outcome_euthycomi
+```
+
+The variation in candidate counts is expected: targets with a distinctive
+phonetic key (OPFOR → one candidate; MEDEVAC → two) pass very few words; short
+acronyms (SAM, IED) have coarse keys and attract many short common words.
+`CASEVAC_zyzzyvas_sisyphus_zizyphus` is a typical spell-out artefact — those
+three words matched via the letter-by-letter fallback "see ay ess ee vee ay
+see", not a realistic spoken form; they should be discarded in Step 2.
+
 ### Step 2 — apply your curation decisions
 
-The raw file contains every candidate the algorithm proposed. Open it
+The pre-curation file contains every candidate the algorithm proposed. Open it
 alongside your annotated curation report and remove any candidates you marked
 `[DISCARD]` from each line, leaving only the confusables you judged to be
 plausible ASR outputs.

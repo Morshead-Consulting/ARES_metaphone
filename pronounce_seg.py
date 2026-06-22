@@ -1,26 +1,13 @@
 #!/usr/bin/env python3
 """
-pronounce_seg.py -- Pronounceability segmentation for military acronyms
-(prototype for DN-PHON-001 Phase 2).
+pronounce_seg.py -- k-best pronunciation segmentation for military acronyms.
 
-INSIGHT (R. Morshead): familiar pronunciations embedded within an acronym
-attract the whole pronunciation toward a hybrid form. ISTAR contains the
-familiar word STAR, so it is spoken "eye-STAR", not "eye-ess-tee-ay-are".
-CBRN contains no pronounceable element (no vowel), so it is spelled out
-letter by letter.
+Converts a term such as ISTAR into its plausible spoken forms ("eye star",
+"is tar", ...) by segmenting the letter string using dynamic programming.
+See docs/pronounce_seg.md for algorithm details, cost constants, and guidance
+on extending FAMILIAR_WORDS.
 
-APPROACH: k-best dynamic-programming segmentation of the acronym into
-segments that are either
-    LETTER : a single spelled-out letter ("I" -> "eye"), cost 1.0
-    CHUNK  : a pronounceable substring, cheaper -- with an extra discount
-             if it is a familiar dictionary word (the attractor effect)
-Each segmentation renders to a spoken form ("eye star") which is then fed
-to the existing Double Metaphone matching in altspell_gen.py in place of
-the raw acronym string.
-
-The DP deliberately returns SEVERAL segmentations, not one: eye-STAR vs
-iss-tar is genuinely ambiguous, and resolving it is a curation decision,
-not an algorithmic one. The tool proposes; the expert disposes.
+Public entry point: spoken_forms(term, k=4) -- called by altspell_gen.py.
 """
 
 import heapq

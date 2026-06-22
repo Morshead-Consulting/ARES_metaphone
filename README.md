@@ -59,6 +59,9 @@ ambiguity the reviewer resolves), always including the full spell-out as a
 fallback. Matching then runs on every spoken form, on both the target and any
 acronym-like candidate (so IED can match IUD through their spoken forms).
 
+For the segmentation algorithm, cost model, and guidance on tuning
+`FAMILIAR_WORDS`, see [docs/pronounce_seg.md](docs/pronounce_seg.md).
+
 This applies to anything `--targets` flags as an acronym (all-caps alphabetic,
 2 or more letters). Targets are normalised to uppercase when read from file, so
 mixed-case entries (e.g. "Istar") are accepted. Ordinary words are matched on

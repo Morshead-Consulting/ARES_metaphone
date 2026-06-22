@@ -2,13 +2,12 @@
 
 [![Tests](https://github.com/Morshead-Consulting/ARES_metaphone/actions/workflows/test.yml/badge.svg)](https://github.com/Morshead-Consulting/ARES_metaphone/actions/workflows/test.yml)
 
-DN-PHON-001: generate candidate ASR confusions for military terms, for
-expert curation into the CTC-WS context file.
+The tool is for generating candidate ASR (Automatic Speech Recognition) confusions for military terms.
 
 The tool converts each military term into its spoken form before matching.
 ISTAR becomes "eye star"; CBRN, which has no pronounceable cluster, is spelled
-out letter-by-letter as "see bee are en". It then uses Double Metaphone and
-Levenshtein distance to find English words that sound like those spoken forms.
+out letter-by-letter as "see bee are en". It then uses Double Metaphone (a phonetic algorithm) and
+Levenshtein distance (used to quantify the dissimilarity between two sequences) to find English words that sound like those spoken forms.
 This spoken-form approach is what makes the tool effective for letter-by-letter
 acronyms (CBRN, IED, ATGM): matching on the raw spelling of those strings would
 find nothing useful.

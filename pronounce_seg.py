@@ -25,7 +25,13 @@ not an algorithmic one. The tool proposes; the expert disposes.
 
 import heapq
 
-# Reuse the letter-sound table from altspell_gen.py
+# Canonical letter-sound table (imported by altspell_gen.py — edit here only).
+# Known limitation: 'W' renders as the two-word string 'double you'. When this
+# is passed to doublemetaphone() as part of a longer spoken form, the library
+# drops the /juː/ phoneme ('you'), so W-bearing acronyms in spell-out position
+# receive an incomplete phonetic key. In practice the current target lists
+# contain no W-bearing acronyms, so impact is nil, but any future target with
+# W in spell-out position should be verified manually.
 LETTER_SOUNDS = {
     'A': 'ay', 'B': 'bee', 'C': 'see', 'D': 'dee', 'E': 'ee', 'F': 'eff',
     'G': 'gee', 'H': 'aitch', 'I': 'eye', 'J': 'jay', 'K': 'kay', 'L': 'el',
@@ -121,9 +127,11 @@ def segment_cost(seg: str, familiar: set) -> float | None:
     return max(0.2, base - LEN_DISCOUNT * (len(seg) - 2))
 
 
-def k_best_segmentations(term: str, k: int = 3, familiar: set = FAMILIAR_WORDS):
+def k_best_segmentations(term: str, k: int = 3, familiar: set = None):
     """k-best DP over the letter string. Returns [(cost, [segments])],
     cheapest first. Each segment is the original substring."""
+    if familiar is None:
+        familiar = FAMILIAR_WORDS
     t = "".join(c for c in term if c.isalpha())
     n = len(t)
     best = [[] for _ in range(n + 1)]   # best[i] = list of (cost, segs) up to i

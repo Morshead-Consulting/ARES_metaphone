@@ -40,12 +40,14 @@ The cache file lives next to this script by default.
 import argparse
 import datetime
 import os
+import shutil
 import sys
+import tempfile
 import urllib.request
 from metaphone import doublemetaphone
 from rapidfuzz.distance import Levenshtein
 
-from pronounce_seg import spoken_forms
+from pronounce_seg import LETTER_SOUNDS, spoken_forms
 
 # Optional: word-frequency ranking. Phase 1 curation showed the dominant
 # keep/discard criterion is whether the candidate is a common word an ASR
@@ -67,15 +69,6 @@ except ImportError:
 
 
 # --- Candidate source: letter spell-outs -----------------------------------
-
-LETTER_SOUNDS = {
-    'A': 'ay', 'B': 'bee', 'C': 'see', 'D': 'dee', 'E': 'ee', 'F': 'eff',
-    'G': 'gee', 'H': 'aitch', 'I': 'eye', 'J': 'jay', 'K': 'kay', 'L': 'el',
-    'M': 'em', 'N': 'en', 'O': 'oh', 'P': 'pee', 'Q': 'cue', 'R': 'are',
-    'S': 'ess', 'T': 'tee', 'U': 'you', 'V': 'vee', 'W': 'double you',
-    'X': 'ex', 'Y': 'why', 'Z': 'zed',
-}
-
 
 def spell_out(acronym: str) -> str:
     """Render an acronym as its spoken letter sequence (UK 'zed' for Z)."""
@@ -113,13 +106,18 @@ def load_wordlist(cache_path: str, allow_download: bool, min_len: int,
                 f"your own list via --wordlist-file."
             )
         sys.stderr.write(f"Downloading word list to cache: {cache_path}\n")
+        cache_dir = os.path.dirname(os.path.abspath(cache_path))
+        tmp_fd, tmp_path = tempfile.mkstemp(dir=cache_dir)
+        os.close(tmp_fd)
         try:
-            urllib.request.urlretrieve(WORDLIST_URL, cache_path)
+            urllib.request.urlretrieve(WORDLIST_URL, tmp_path)
         except Exception as e:
+            os.unlink(tmp_path)
             sys.exit(
                 f"Download failed ({e}).\nOn an air-gapped machine, supply a "
                 f"word list yourself with --wordlist-file PATH."
             )
+        shutil.move(tmp_path, cache_path)
 
     with open(cache_path, encoding="utf-8", errors="ignore") as f:
         words = [w.strip() for w in f if w.strip()]
@@ -135,9 +133,9 @@ def phonetic_keys(term: str):
 
 
 def looks_like_acronym(term: str) -> bool:
-    """Heuristic: an all-caps alphabetic token of 2-8 letters is treated as
+    """Heuristic: an all-caps alphabetic token of 2+ letters is treated as
     an acronym and matched via its spoken forms rather than its raw string."""
-    return term.isalpha() and term.isupper() and 2 <= len(term) <= 8
+    return term.isalpha() and term.isupper() and len(term) >= 2
 
 
 def term_forms(term: str, use_seg: bool = True):
@@ -329,8 +327,11 @@ def main():
         ap.error("choose at least one candidate source: --candidates, "
                  "--use-spellouts, and/or --use-wordlist")
 
-    with open(args.targets, encoding="utf-8") as f:
-        targets = [ln.strip() for ln in f if ln.strip()]
+    try:
+        with open(args.targets, encoding="utf-8") as f:
+            targets = [ln.strip().upper() for ln in f if ln.strip()]
+    except FileNotFoundError:
+        ap.error(f"targets file not found: {args.targets}")
 
     candidates = build_candidates(args, targets)
     n_sources = sum(bool(x) for x in
@@ -353,8 +354,9 @@ def main():
         output_lines.append(f"# {len(targets)} targets, {len(candidates)} candidates, "
                             f"max_key_dist={args.max_key_dist}, "
                             f"pronounce_seg={'on' if use_seg else 'off'}\n")
+        target_forms = {t: term_forms(t, use_seg) for t in results}
         for target, hits in results.items():
-            forms = term_forms(target, use_seg)
+            forms = target_forms[target]
             spoken = " | ".join(f'"{r}"' for r, _ in forms)
             output_lines.append(f"{target}  spoken as: {spoken}")
             for cand, kd, sd, via in hits:

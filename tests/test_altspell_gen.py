@@ -93,7 +93,9 @@ def test_generate_confusions_no_match_absent_from_results():
     results = generate_confusions(["XYZZY"], ["cat", "dog"], max_key_dist=0)
     assert "XYZZY" not in results
 
-def test_generate_confusions_sorted_by_key_dist_then_surface_dist():
+def test_generate_confusions_sorted_by_key_dist_then_surface_dist(monkeypatch):
+    import altspell_gen
+    monkeypatch.setattr(altspell_gen, "zipf", lambda word: 0.0)
     candidates = ["psalm", "slim", "samba"]
     results = generate_confusions(["SAM"], candidates, max_key_dist=2)
     hits = results.get("SAM", [])
@@ -107,12 +109,19 @@ def test_generate_confusions_sorted_by_key_dist_then_surface_dist():
 # ---------------------------------------------------------------------------
 
 def test_emit_ctcws_single_hit():
-    results = {"SAM": [("psalm", 0, 1)]}
+    results = {"SAM": [("psalm", 0, 1, None)]}
     assert emit_ctcws(results) == ["SAM_psalm"]
 
 def test_emit_ctcws_multiple_hits():
-    results = {"SAM": [("psalm", 0, 1), ("samba", 1, 2)]}
+    results = {"SAM": [("psalm", 0, 1, None), ("samba", 1, 2, None)]}
     assert emit_ctcws(results) == ["SAM_psalm_samba"]
+
+def test_emit_ctcws_from_real_generate_confusions_output():
+    results = generate_confusions(["SAM"], ["psalm"], max_key_dist=1)
+    lines = emit_ctcws(results)
+    assert len(lines) == 1
+    assert lines[0].startswith("SAM_")
+    assert "psalm" in lines[0]
 
 def test_emit_ctcws_empty_input():
     assert emit_ctcws({}) == []

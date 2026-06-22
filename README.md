@@ -59,10 +59,11 @@ ambiguity the reviewer resolves), always including the full spell-out as a
 fallback. Matching then runs on every spoken form, on both the target and any
 acronym-like candidate (so IED can match IUD through their spoken forms).
 
-This applies to anything `--targets` flags as an acronym (all-caps, 2-8
-letters). Ordinary words are matched on their raw string as before. To turn
-segmentation off entirely and revert to raw-string matching, use
-`--no-pronounce-seg`.
+This applies to anything `--targets` flags as an acronym (all-caps alphabetic,
+2 or more letters). Targets are normalised to uppercase when read from file, so
+mixed-case entries (e.g. "Istar") are accepted. Ordinary words are matched on
+their raw string as before. To turn segmentation off entirely and revert to
+raw-string matching, use `--no-pronounce-seg`.
 
 ## Candidate sources
 
@@ -169,5 +170,5 @@ directory instead.
 
 This tool is an assist to expert curation, not a replacement. The tool
 proposes; the human keeps the plausible confusions, discards the noise, and
-adds real mis-recognitions the algorithms miss. The Sprint 3 recordings feed
-the actual observed errors back into `--candidates`, closing the loop.
+adds real mis-recognitions the algorithms miss. Observed errors from real
+recordings feed back into `--candidates`, closing the loop.

@@ -190,21 +190,37 @@ substitute for.
 
 ## Output: the CTC-WS context file
 
-Once curated, drop the `--report` flag to emit lines in the format consumed by
-the CTC-WS context-biasing layer:
+The CTC-WS context file is the end product of the whole workflow. It is what
+you load into the ASR engine's context-biasing layer to tell it which
+confusable words to watch for alongside each target acronym.
+
+### Step 1 — generate the raw context file
+
+Run the same command used to produce the curation report, but omit `--report`:
 
 ```
 uv run python altspell_gen.py --targets data/targets.txt --use-wordlist --max-key-dist 0 --max-per-target 15 --output-dir data/reports
 ```
 
-Without `--report` the auto-named file uses the suffix `_ctcws.txt`, e.g.
-`targets_20260610_143022_ctcws.txt`.
-
-Each output line has the form:
+Without `--report`, the output file uses the suffix `_ctcws.txt`, e.g.
+`targets_20260610_143022_ctcws.txt`. Each line has the form:
 
 ```
 TARGET_spelling1_spelling2_...
 ```
 
-Paste the curated lines into the CTC-WS context file, replacing or extending
-the existing hand-authored entries.
+One line per target, with the acronym and all its proposed confusable
+candidates joined by underscores.
+
+### Step 2 — apply your curation decisions
+
+The raw file contains every candidate the algorithm proposed. Open it
+alongside your annotated curation report and remove any candidates you marked
+`[DISCARD]` from each line, leaving only the confusables you judged to be
+plausible ASR outputs.
+
+### Step 3 — load into the ASR system
+
+Paste the edited lines into the CTC-WS context file that the ASR system reads
+at inference time, replacing or extending the existing hand-authored entries.
+This file is the deliverable.

@@ -36,7 +36,8 @@ uv run pytest tests/ -v
 The suite includes a **gold standard**: the real spoken pronunciation of each
 target acronym (ISTAR -> "eye star", CBRN -> "see bee are en", ...) must appear
 among the proposals, and the previously un-handled cases (CBRN, IED, ATGM) must
-now match. See `tests/test_pronounce_seg.py`.
+now match. See [docs/tests.md](docs/tests.md) for what each test group covers
+and how to add a new target to the gold standard.
 
 ## Quick start
 
